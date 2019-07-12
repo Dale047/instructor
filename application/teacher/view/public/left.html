@@ -1,0 +1,31 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="nav-close"><i class="fa fa-times-circle"></i>
+    </div>
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span><img alt="image" class="img-circle" src="__STATIC__/author/images/face.jpeg" width="65px" height="65px"/></span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">{$Instructor.0.username}</strong></span>
+                                <span class="text-muted text-xs block">{$Instructor.0.status|InsStatus}<b class="caret"></b></span>
+                                </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a class="J_menuItem" href="{:url('teacher/common/online',['usernum'=>$Instructor.0.usernum,'status'=>$Instructor.0.status==1?2:1])}">切换状态</a>
+                        </li>
+                        <li><a class="J_menuItem" href="{:url('teacher/index/userinfo')}">个人资料</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{:url('teacher/login/logout')}">安全退出</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo-element">智+
+                </div>
+            </li>
+            {include file="public/menu" /}
+        </ul>
+    </div>
+</nav>

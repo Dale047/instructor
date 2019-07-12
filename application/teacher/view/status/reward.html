@@ -1,0 +1,55 @@
+{include file="public/head" /}
+<!-- Data Tables -->
+<link href="__STATIC__/teacher/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<h2>奖项申请</h2>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding: 0px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>学生奖项登记申请 <small>共 {$CountAllWaitReward} 条数据/&nbsp;&nbsp;当前状态仅显示10条</small></h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>等级</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="AllWaitReward" id="vo"}
+                        <tr class="gradeX">
+                            <td>{$i}</td>
+                            <td>{$vo.username}</td>
+                            <td>{$vo.MatchType}</td>
+                            <td class="center">{$vo.status|LeaveStatus}</td>
+                            <td class="center">
+                                <a href="{:url('teacher/info/rewardinfo',['id'=>$vo.id])}"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                    {$AllWaitReward->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- 全局js -->
+{include file="public/footer" /}
+
+<!-- Data Tables -->
+<script src="__STATIC__/teacher/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="__STATIC__/teacher/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+{include file="public/head" /}
+
+<link rel="stylesheet" href="__STATIC__/index/css/mdui.css" />
+<link rel="stylesheet" href="__STATIC__/index/css/app.css" />
+
+</head>
+<body>
+
+{include file="public/header" /}
+<blockquote style="text-align: left">
+    <p>班费收支</p>
+    <footer><mark>{$UserInfo.username}</mark>你好,请按照班级真实情况填写班费收支</footer>
+</blockquote>
+<div class="alert alert-warning" role="alert">灰色部分表示不可修改</div>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active" style="width: 50%;">
+        <a href="#home" data-toggle="tab">
+            班费支出
+        </a>
+    </li>
+    <li style="width: 50%;">
+        <a href="#wait" data-toggle="tab">
+            班费收取
+        </a>
+    </li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <br />
+        {include file="money/mon_in" /}
+    </div>
+    <div class="tab-pane fade" id="wait">
+        <br />
+         {include file="money/mon_out" /}
+    </div>
+</div>
+{include file="public/copy" /}
+</body>
+</html>

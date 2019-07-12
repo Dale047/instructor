@@ -1,0 +1,44 @@
+
+
+<div class="row" style="min-height: 22%">
+
+    <!--宣传展示类-->
+    <a href="{:url('index/night/index')}" class="item_one" style="display: block;" data-type="0" >
+        <img class="gntub" src="__STATIC__/index/images/tu2.png">
+        <span>晚寝打卡</span>
+    </a>
+    <!--宣传展示类 end-->
+
+
+    <!--推广吸粉类-->
+    <a href="{:url('index/leave/index')}" class="item_one" style="display: block;" data-type="1">
+        <img class="gntub" src="__STATIC__/index/images/tu3.png">
+        <span>在线请假</span>
+    </a>
+    <!--推广吸粉类 end-->
+
+
+    <!--营销活动类-->
+    <a href="{:url('index/reward/index')}" class="item_one" style="display: block;" data-type="2">
+        <img class="gntub" src="__STATIC__/index/images/tu4.png">
+        <span>登记获奖</span>
+    </a>
+    <!--营销活动类 end-->
+
+    {equal name="UserInfo.ide" value="2"}
+    <!--电商交易类-->
+    <a href="{:url('index/alert/index')}" class="item_one" style="display: block;" data-type="3">
+        <img class="gntub" src="__STATIC__/index/images/tu1.png">
+        <span>添加公告</span>
+    </a>
+    <!--电商交易类 end-->
+
+
+    <!--行业功能类-->
+    <a href="{:url('index/money/index')}" class="item_one" style="display: block;" data-type="4">
+        <img class="gntub" src="__STATIC__/index/images/tu1.png">
+        <span>班费详情</span>
+    </a>
+    <!--行业功能类 end-->
+    {/equal}
+</div>

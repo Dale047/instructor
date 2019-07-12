@@ -1,0 +1,17 @@
+<div class="device">
+    <a class="arrow-left" href="javascript:;"></a>
+    <a class="arrow-right" href="javascript:;"></a>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {volist name="AllBanner" id="vo"}
+            <!-- 幻灯片 -->
+            <a href="#" class="swiper-slide">
+                <img src="{$vo.value}" alt="{$vo.name}">
+            </a>
+            {/volist}
+        </div>
+    </div>
+    <div class="points">
+        <span class="swiper-pagination-switch"></span>
+    </div>
+</div>

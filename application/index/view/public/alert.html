@@ -1,0 +1,43 @@
+<li class="pro">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="alert alert-success" role="alert" style="text-align: left">
+            <ul>
+                <li>注：</li>
+                <li>1.默认列表显示公告，需要你手动展开指定通知</li>
+                <li>2.<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>图标表示紧急公告，需要你认真阅读</li>
+            </ul>
+        </div>
+        <!----------------列表开始-------------->
+        {volist name="AlertList" id="vo" empty="当前班级暂无公告"}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne" style="text-align: left">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{$i}" aria-expanded="true" aria-controls="collapseOne">
+                        {$vo.title}
+                    </a>
+                    {equal name="$vo.level" value="2"}
+                    <span class="glyphicon glyphicon-fire" aria-hidden="true" style="float: right"></span>
+                    {/equal}
+                </h4>
+            </div>
+            <!--此处进行判断是否是第一条公告，自动展开-->
+            <div id="{$i}"  {eq name="$i" value="1"}  class="panel-collapse collapse in" {else/} class="panel-collapse collapse" {/eq} role="tabpanel" aria-labelledby="headingOne">
+            <!--判断结束-->
+                <div class="panel-body" style="text-align: left">
+                    <p class="text-lowercase">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;{$vo.user_num|NumThisUser}&nbsp;
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;{$vo.tel}&nbsp;
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;{$vo.create_time}&nbsp;
+                    </p>
+                    <hr>
+                    <p class="lead">{$vo.content}</p>
+                    {notempty name="$vo.SavePath"}
+                        <img src="/instructor/public/{$vo.SavePath}" class="img-responsive" alt="Responsive image">
+                    {/notempty}
+                </div>
+            </div>
+        </div>
+        {/volist}
+        <!----------------列表结尾-------------->
+    </div>
+</li>

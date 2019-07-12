@@ -1,0 +1,29 @@
+{include file="public/head" /}
+<!--[if lt IE 9]>
+<meta http-equiv="refresh" content="0;ie.html" />
+<![endif]-->
+<script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        {include file="public/left" /}
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        {include file="public/top" /}
+        <!--右侧部分结束-->
+        <!--右侧边栏开始-->
+        {include file="public/right" /}
+        <!--右侧边栏结束-->
+    </div>
+
+    <!-- 全局js -->
+    {include file="public/footer" /}
+
+    <!-- 自定义js -->
+    <script src="__STATIC__/teacher/js/hplus.js?v=4.1.0"></script>
+    <script type="text/javascript" src="__STATIC__/teacher/js/contabs.js"></script>
+</body>
+
+</html>

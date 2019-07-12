@@ -1,0 +1,62 @@
+<div class="alert alert-danger" role="alert">填写信息后请保持电话畅通，辅导员可能随时与你核实</div>
+<form action="{:url('index/leave/longleave')}" method="post" class="form-horizontal" style="text-align: left;width: 90%;margin: 0px auto" enctype="multipart/form-data">
+    <input type="hidden" class="form-control" value="{$UserInfo.user_num}" name="user_num" readonly="readonly">
+    <!--type表示请假类型 1：节次请假 2：长假-->
+    <input type="hidden" class="form-control" value="2" name="type" readonly="readonly">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">姓名<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value="{$UserInfo.username}" name="username" readonly="readonly">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">班级号<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value="{$UserInfo.class_id}" name="class_id" readonly="readonly">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">开始时间<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="请选择日期" id="test-limit4" name="leave_start" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">结束时间<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="请选择日期" id="test-limit5" name="leave_end" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">请假事由<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <select class="form-control" name="leaveRes">
+                {volist name="LeaveRes" id="vo"}
+                <option>{$vo.value}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">图片附件<span style="color: darkseagreen">*非必填项</span></label>
+        <div class="col-sm-10">
+            <div class="weui-cells weui-cells_form">
+                <input type="hidden" name="filePath" id="upfile" style="border:1px dotted #ccc;width: 100%" disabled="disabled">
+                <input type="button" value="选择附件" onclick="path.click()" class="btn btn-default"  multiple="true" required>
+                <input type="file" id="path"  name="file" style="display:none" onchange="upfile.value=this.value">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">简单说明<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <textarea placeholder="请控制在100个字符以内" name="other" class="form-control" rows="3" maxlength="100" required="required"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">申请</button> &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="reset" class="btn btn-warning">重置</button>
+        </div>
+    </div>
+</form>

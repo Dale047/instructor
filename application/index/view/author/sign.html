@@ -1,0 +1,32 @@
+
+{include file="author/head" /}
+
+<link rel="stylesheet" href="__STATIC__/index/css/mdui.css" />
+<link rel="stylesheet" href="__STATIC__/index/css/app.css" />
+
+</head>
+<body>
+
+{include file="author/header" /}
+<p class="lead">注：晚归打卡将是平时德育重要考核标准</p>
+<table class="table">
+    <tr>
+        <td>地点</td>
+        <td>签到时间</td>
+        <td>状态</td>
+    </tr>
+    {volist name="NightSignInfo" id="vo" empty="<span class='label label-warning'>暂无数据</span>"}
+    <tr>
+        <td>{$vo.ip|getAddress}</td>
+        <td width="170px">{$vo.create_time}</td>
+        <td>{$vo.status|NorStatus}</td>
+    </tr>
+    {/volist}
+</table>
+<nav aria-label="Page navigation">
+    {$NightSignInfo->render()}
+</nav>
+</div>
+    {include file="public/copy" /}
+</body>
+</html>

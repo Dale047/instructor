@@ -1,0 +1,48 @@
+
+{include file="public/head" /}
+
+<link rel="stylesheet" href="__STATIC__/index/css/mdui.css" />
+<link rel="stylesheet" href="__STATIC__/index/css/app.css" />
+
+</head>
+<body>
+
+{include file="public/header" /}
+<blockquote style="text-align: left">
+    <p>费用详情</p>
+    <footer><mark>{$UserInfo.username}</mark>你好,这里是你所在班级费用信息</footer>
+</blockquote>
+<div style="text-align: left;width: 90%;margin: 0px auto">
+    <div class="alert alert-success" role="alert">此处是费用详情，如果你对有一项产生问题，可以随时联系登记负责人反馈</div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">登记人</label>{$data.0.user_num|NumThisUser}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">联系方式</label>{$data.0.tel}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">费用类型</label>{$data.0.type|MoneyType}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">费用缘由</label>{$data.0.result}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">当前费用</label>{$data.0.money}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">当前余额</label>{$data.0.money_now}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">备注</label>{$data.0.other}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">申请时间</label>{$data.0.create_time}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">附件:</label>
+    </div>
+    <img src="/instructor/public/{$data.0.SavePath}" class="img-responsive" alt="Responsive image">
+</div>
+{include file="public/copy" /}
+</body>
+</html>

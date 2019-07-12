@@ -1,0 +1,56 @@
+
+{include file="public/head" /}
+
+<link rel="stylesheet" href="__STATIC__/index/css/mdui.css" />
+<link rel="stylesheet" href="__STATIC__/index/css/app.css" />
+
+</head>
+<body>
+
+{include file="public/header" /}
+<blockquote style="text-align: left">
+    <p>获奖信息</p>
+    <footer><mark>{$UserInfo.username}</mark>你好,这里是你的获奖信息</footer>
+</blockquote>
+<div style="text-align: left;width: 90%;margin: 0px auto">
+    {eq name="$data.0.status" value="2"}
+        <div class="alert alert-success" role="alert">你的获奖信息已通过审核，这将作为你期末德育凭证</div>
+    {else/}
+        {eq name="$data.0.status" value="1"}
+            <div class="alert alert-warning" role="alert">当前你的获奖信息待审核，请耐心等待。你还可以尝试通过紧急联系方式联系辅导员</div>
+        {else/}
+             <div class="alert alert-danger" role="alert">当前你的获奖信息未通过，可能是由于没有上传必要附件图片导致的。你还可以尝试通过紧急联系方式联系辅导员修改</div>
+        {/eq}
+    {/eq}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学号</label>{$data.0.user_num}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">姓名</label>{$data.0.username}
+    </div>
+    <!--type表示请假类型 1：节次请假 2：长假-->
+    <div class="form-group">
+        <label class="col-sm-2 control-label">获奖类型</label>{$data.0.MatchType}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">获奖日期</label>{$data.0.MatchDate}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">获奖名称</label>{$data.0.MatchName}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">获奖等级</label>{$data.0.MatchLevel}
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">申请时间</label>{$data.0.create_time}
+    </div>
+        {notempty name="$data.0.SavePath"}
+            <div class="form-group">
+                <label class="col-sm-2 control-label">附件:</label>
+            </div>
+            <img src="/instructor/public/{$data.0.SavePath}" class="img-responsive" alt="Responsive image">
+        {/notempty}
+</div>
+{include file="public/copy" /}
+</body>
+</html>

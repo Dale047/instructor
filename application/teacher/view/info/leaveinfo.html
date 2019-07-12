@@ -1,0 +1,110 @@
+
+{include file="public/head" /}
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <h2>请假信息</h2>{$data.status|LeaveStatus}
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li>
+                                    <a href="#"> 姓名:{$data.username}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 学号:{$data.user_num}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 班级:{$data.class_id|getMajorId|getMajor}  {$data.class_id|getClassNum}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 请假类型:{$data.type|LeaveType}</a>
+                                </li>
+                                <!--处理节次请假方式-->
+                                {eq name="$data.type" value="1"}
+                                <li>
+                                    <a href="#">请假日期:{$data.leave_start}</a>
+                                </li>
+                                <li>
+                                    <a href="#">请假节次:{$data.leave_class}</a>
+                                </li>
+                                <li>
+                                    <a href="#">请假事由:{$data.leaveRes}</a>
+                                </li>
+                                <li>
+                                    <a href="#">简单说明:{$data.other}</a>
+                                </li>
+                                <li>
+                                    <a href="#">申请时间:{$data.create_time}</a>
+                                 </li>
+                                {notempty name="$data.SavePath"}
+                                <li>
+                                    <a href="#">附件:</a>
+                                </li>
+                                <img src="/instructor/public/{$data.SavePath}" class="img-responsive" alt="Responsive image">
+                                {/notempty}
+                                {else/}
+                                <!--处理长假请假方式-->
+                                <li>
+                                    <a href="#">开始日期:{$data.leave_start}</a>
+                                </li>
+                                <li>
+                                    <a href="#">结束日期:{$data.leave_end}</a>
+                                </li>
+                                <li>
+                                    <a href="#">请假事由:{$data.leaveRes}</a>
+                                </li>
+                                <li>
+                                    <a href="#">简单说明:{$data.other}</a>
+                                </li>
+                                <li>
+                                    <a href="#">申请时间:{$data.create_time}</a>
+                                </li>
+                                {notempty name="$data.SavePath"}
+                                <li>
+                                    <a href="#">附件:</a>
+                                </li>
+                                <img src="/instructor/public/{$data.SavePath}" class="img-responsive" alt="Responsive image">
+                                {/notempty}
+                                {/eq}
+                            </ul>
+                            <div class="clearfix"></div>
+                            <a class="btn btn-block btn-primary" href="{:url('teacher/info/leavestatus',['id'=>$data.id,'status'=>'2'])}">批准</a>
+                            <a class="btn btn-block btn-danger" href="{:url('teacher/info/leavestatus',['id'=>$data.id,'status'=>'3'])}">拒绝</a>
+                            <a class="btn btn-block btn-default" href="{:url('teacher/index/index')}">返回首页</a>
+                            <div class="space-25"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 全局js -->
+    {include file="public/footer" /}
+
+
+
+    <!-- 自定义js -->
+    <script src="__STATIC__/static/teacher/js/content.js?v=1.0.0"></script>
+
+
+    <!-- iCheck -->
+    <script src="__STATIC__/static/teacher/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+</body>
+
+</html>

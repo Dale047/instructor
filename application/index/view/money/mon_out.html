@@ -1,0 +1,59 @@
+<form action="" method="post" class="form-horizontal" style="text-align: left;width: 90%;margin: 0px auto" enctype="multipart/form-data">
+    <input type="hidden" class="form-control" value="2" readonly="readonly" name="type">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">记录负责人<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value="{$UserInfo.user_num}" readonly="readonly" name="user_num">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">联系方式<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="方便及时询问" value="{$UserInfo.tel}" name="tel" maxlength="20">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">班级号<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value="{$ClassInfo.0.class_id}" name="class_id" maxlength="20" readonly="readonly">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">支出事由<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <select class="form-control" name="result">
+                {volist name="ResOut" id="vo"}
+                <option value="{$vo}">{$vo}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">金额费用<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="请输入你收取的总额费用" name="money" maxlength="20">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">简单说明<span style="color: red">*</span></label>
+        <div class="col-sm-10">
+            <textarea placeholder="请控制在100个字符以内" name="other" class="form-control" rows="3" maxlength="100" required="required"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">图片附件<span style="color: red">*必填</span></label>
+        <div class="col-sm-10">
+            <div class="weui-cells weui-cells_form">
+                <input type="hidden" name="filePath" id="upfile" style="border:1px dotted #ccc;width: 100%" disabled="disabled">
+                <input type="button" value="选择附件" onclick="path.click()" class="btn btn-default"  multiple="true" required>
+                <input type="file" id="path"  name="file" style="display:none" onchange="upfile.value=this.value">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">发布</button> &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="reset" class="btn btn-warning">重置</button>
+        </div>
+    </div>
+</form>

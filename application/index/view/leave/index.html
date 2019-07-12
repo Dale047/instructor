@@ -1,0 +1,54 @@
+
+{include file="public/head" /}
+
+<link rel="stylesheet" href="__STATIC__/index/css/mdui.css" />
+<link rel="stylesheet" href="__STATIC__/index/css/app.css" />
+
+</head>
+<body>
+
+{include file="public/header" /}
+<blockquote style="text-align: left">
+    <p>在线请假</p>
+    <footer><mark>{$UserInfo.username}</mark>你好,请按照自身真实情况填写请假信息</footer>
+</blockquote>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active" style="width: 50%;">
+        <a href="#home" data-toggle="tab">
+            节次请假（当日节次）
+        </a>
+    </li>
+    <li style="width: 50%;">
+        <a href="#wait" data-toggle="tab">
+            请长假（三天内）
+        </a>
+    </li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        {include file="leave/leave_s" /}
+    <div class="tab-pane fade" id="wait">
+        {include file="leave/leave_l" /}
+    </div>
+</div>
+
+{include file="public/copy" /}
+<!--日期空间插件https://www.layui.com/laydate/-->
+<script src="__STATIC__/laydate/laydate.js"></script>
+<script>
+    laydate.render({
+        elem: '#test-limit4'
+        ,min: 1
+        ,max: 2
+    });
+</script>
+    <script>
+        laydate.render({
+            elem: '#test-limit5'
+            ,min: 2
+            ,max: 4
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div class="fixedBar">
+    <div class="SubLinks">
+        <ul>
+            <li><a href="javascript:;" onclick="tagsFilter($(this),'all')">全部功能</a></li>
+            <li><a href="javascript:;" onclick="tagsFilter($(this),0)">晚寝</a></li>
+            <li><a href="javascript:;" onclick="tagsFilter($(this),1)">请假</a></li>
+            <li><a href="javascript:;" onclick="tagsFilter($(this),2)">获奖</a></li>
+            {equal name="UserInfo.ide" value="2"}
+                <li><a href="javascript:;" onclick="tagsFilter($(this),3)">公告</a></li>
+                <li><a href="javascript:;" onclick="tagsFilter($(this),4)">班费</a></li>
+            {/equal}
+        </ul>
+        <span class="triangle"></span>
+    </div>
+    <a class="aClick" href="javascript:;"></a>
+</div>

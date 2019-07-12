@@ -1,0 +1,163 @@
+
+    <!--------------------------------------系统首页------------------------------------>
+
+
+    <!--系统头部-->
+    {include file="public/head" /}
+</head>
+<body>
+<div class="page" style="margin:0;">
+
+    <!--首页轮播图-->
+    {include file="public/banner" /}
+
+    <!--首页滚动提示-->
+    {include file="public/tip" /}
+
+    <!--首页滑动功能-->
+    {include file="public/nav"}
+
+
+        <ul class="neir" style="width:95%; margin-left:2%;border: rgba(37, 195, 137, 0) 1px solid;overflow:hidden; min-height:240px;padding-bottom: 30px;" id="ul2" >
+            <li class="active">
+                <div class="newTit clearfix">
+                    <p class="tongzhi_h1">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        欢迎你 {$UserInfo.username} &nbsp;
+                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                        {$UserLoginInfo.0.last_login_ip|getAddress} &nbsp;
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        {$UserInfo.status|NorStatus}
+                    </p>
+                    <!-- 所有功能，这里的标题全部动态改变填充 -->
+                </div>
+
+     {include file="public/applications" /}
+
+
+     {include file="public/fix" /}
+            </li>
+
+            <!-----------晚寝记录------------>
+            {include file="public/night" /}
+
+            <!-----------请假记录------------>
+            {include file="public/leave" /}
+
+            <!-----------获奖记录------------>
+            {include file="public/reward" /}
+
+            <!-----------班费收支------------>
+            {include file="public/money" /}
+
+            <!-----------通知与公告------------>
+            {include file="public/alert" /}
+
+        </ul>
+            {include file="public/copy" /}
+    </div>
+</div>
+<div class="footer clearfix">
+    <a href="tel:{$Instructor.0.tel}"><span class="glyphicon glyphicon-earphone" aria-hidden="true">紧急电联</span></a>
+    <a href="{:url('index/author/index')}"><span class="glyphicon glyphicon-user" aria-hidden="true">个人中心</span></a>
+</div>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        pagination: '.points',
+        loop: true,
+        autoplay: 5000,
+        grabCursor: true,
+        paginationClickable: true
+    });
+    $('.arrow-left').on('click',
+            function(e) {
+                e.preventDefault();
+                mySwiper.swipePrev()
+            });
+    $('.arrow-right').on('click',
+            function(e) {
+                e.preventDefault();
+                mySwiper.swipeNext()
+            });
+    var mySwiper2 = new Swiper('#slides', {
+        pagination: false,
+        paginationClickable: true,
+    });
+    $('.prev').on('click',
+            function(e) {
+                e.preventDefault();
+                mySwiper2.swipePrev()
+            });
+    $('.next').on('click',
+            function(e) {
+                e.preventDefault();
+                mySwiper2.swipeNext()
+            });
+    //tab切换
+    window.onload = function() {
+        var a=$("#slides a");
+        var b=$(".neir>li");
+        var c='active';
+        tab(a,b,c);
+    };
+    function tab(a,b,c){
+        var len=$(a);
+        len.bind("click",function(){
+            var index = 0;
+            $(this).addClass(c).siblings().removeClass(c);
+            index = len.index(this);
+            $(b).eq(index).show().siblings().hide();
+            return false;
+        }).eq(0).trigger("click");
+    }
+    $(function(){
+        $(".newTit .moreLink>a").click(function(){
+            if($(this).hasClass('on')){
+                $(this).removeClass('on').next().hide();
+            }else{
+                $(this).addClass('on').next().show();
+            }
+        });
+        $(".fixedBar a.aClick").click(function() {
+            $(".fixedBar .SubLinks").toggle();
+            return false;
+        });
+    });
+    $(".neir .row a[data-new=new]").show();//默认显示最新的项目
+    function tagsFilter(obja,type) {
+        var oText=obja.text();
+        var newTit=$('.newTit h3').text(oText);
+        $(".item_one").hide();
+            if(typeof type === 'number'){
+                $(".neir .row a[data-type="+type+"]").show();
+            }else if(type === 'all'){
+                $(".item_one").show();
+            }else if(type==='new'){
+                $(".neir .row a[data-new=new]").show();
+            }
+        $(".fixedBar .SubLinks").hide();
+        $(".newTit .moreLink>a").removeClass('on').next().hide();
+        $("html,body").stop().animate({scrollTop:$(".newTit").offset().top},1000);
+    }
+    $(function(){
+        var $this = $(".scrollNews");
+        var t=null;
+        $this.hover(function(){
+            clearInterval(t);
+        },function(){
+            t = setInterval(function(){
+                scrollNews( $this );
+            }, 4000 );
+        }).trigger("mouseleave");
+    });
+    function scrollNews(obj){
+        var $self = obj.find(".yy");
+        var lineHeight = $self.find(".tongzhi").eq(0).height();
+        $self.animate({"marginTop": -lineHeight +"px"}, 600 , function(){
+            $self.css({marginTop:0}).find(".tongzhi").eq(0).appendTo($self);
+        })
+    }
+</script>
+
+</body>
+</html>

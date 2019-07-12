@@ -1,0 +1,23 @@
+<li class="pro">
+    <div class="one_itme" id="li_two">
+        <p class="lead">班费详情列表</p>
+        <table class="table">
+            <tr>
+                <td>类型</td>
+                <td>使用</td>
+                <td>剩余</td>
+                <td>提交时间</td>
+                <td>操作</td>
+            </tr>
+            {volist name="Money" id="vo" empty="<span class='label label-warning'>暂无数据</span>"}
+            <tr>
+                <td>{$vo.type|MoneyType}</td>
+                <td>{$vo.money}</td>
+                <td>{$vo.money_now}</td>
+                <td width="170px">{$vo.create_time}</td>
+                <td><a href="{:url('index/money/moneyinfo',['id'=>$vo.id])}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</li>

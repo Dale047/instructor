@@ -1,0 +1,92 @@
+
+{include file="public/head" /}
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <h2>学生信息</h2>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li>
+                                    <a href="#"> 姓名:{$data.username}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 学号:{$data.user_num}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 班级:{$data.class_id|getMajorId|getMajor}  {$data.class_id|getClassNum}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 身份证号:{$data.tel}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 性别:{$data.sex}</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 民族:{$data.mz}</a>
+                                </li>
+                                <li>
+                                    <a href="#">手机号:{$data.tel}</a>
+                                </li>
+                                <li>
+                                    <a href="#">家庭住址:{$data.user_add}</a>
+                                </li>
+                                <li>
+                                    <a href="#">邮箱:{$data.email}</a>
+                                 </li>
+                                <li>
+                                    <a href="#">微信:{$data.wechat}</a>
+                                </li>
+                                <li>
+                                    <a href="#">身份:{$data.ide|getIde}</a>
+                                </li>
+                                <li>
+                                    <a href="#">状态:{$data.status|ClassStatus}</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <a class="btn btn-block btn-primary" href="{:url('teacher/info/stuide',['id'=>$data.id,'ide'=>$data.ide==2?1:2])}">
+                                {equal name="$data.ide" value="1"}
+                                设置为班委
+                                {else/}
+                                设置为普通学生
+                                {/equal}
+                            </a>
+                            <a class="btn btn-block btn-default" href="{:url('teacher/index/index')}">返回首页</a>
+                            <div class="space-25"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 全局js -->
+    {include file="public/footer" /}
+
+
+
+    <!-- 自定义js -->
+    <script src="__STATIC__/static/teacher/js/content.js?v=1.0.0"></script>
+
+
+    <!-- iCheck -->
+    <script src="__STATIC__/static/teacher/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+</body>
+
+</html>

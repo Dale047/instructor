@@ -1,0 +1,71 @@
+
+{include file="public/head" /}
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <h2>个人信息</h2>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <form action="" method="post">
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <input type="hidden" class="form-control" value="{$Instructor.0.id}" name="id">
+                                <li>
+                                    <a href="#"> 姓名<input type="text" class="form-control" value="{$Instructor.0.username}" name="username" readonly="readonly"></a>
+                                </li>
+                                <li>
+                                    <a href="#"> 编号<input type="text" class="form-control" value="{$Instructor.0.usernum}" name="usernum" readonly="readonly"></a>
+                                </li>
+                                <li>
+                                    <a href="#"> 手机号码<input type="text" class="form-control" value="{$Instructor.0.tel}" name="tel"></a>
+                                </li>
+                                <li>
+                                    <a href="#"> qq<input type="text" class="form-control" value="{$Instructor.0.qq}" name="qq"></a>
+                                </li>
+                                <li>
+                                    <a href="#"> 微信<input type="text" class="form-control" value="{$Instructor.0.wechat}" name="wechat"></a>
+                                </li>
+                                <li>
+                                    <a href="#"> 办公地点<input type="text" class="form-control" value="{$Instructor.0.office}" name="office"></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <button class="btn btn-block btn-primary" type="submit">确认修改</button>
+                            <a class="btn btn-block btn-default" href="{:url('teacher/index/index')}">返回首页</a>
+                            <div class="space-25"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 全局js -->
+    {include file="public/footer" /}
+
+
+
+    <!-- 自定义js -->
+    <script src="__STATIC__/static/teacher/js/content.js?v=1.0.0"></script>
+
+
+    <!-- iCheck -->
+    <script src="__STATIC__/static/teacher/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+</body>
+
+</html>

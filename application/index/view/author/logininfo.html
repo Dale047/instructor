@@ -1,0 +1,35 @@
+
+{include file="author/head" /}
+
+<link rel="stylesheet" href="__STATIC__/index/css/mdui.css" />
+<link rel="stylesheet" href="__STATIC__/index/css/app.css" />
+
+</head>
+<body>
+
+{include file="author/header" /}
+<p class="lead">登录信息列表</p>
+<table class="table">
+    <tr>
+        <td width="55px">序号</td>
+        <td>状态</td>
+        <td>登录时间</td>
+        <td>登录地点</td>
+    </tr>
+    {volist name="UserLoginInfo" id="vo" empty="<span class='label label-warning'>暂无数据</span>"}
+    <tr>
+        <td>{$i}</td>
+        <td>{$vo.status|NorStatus}</td>
+        <td>{$vo.last_login_time|getThisTime}</td>
+        <td>{$vo.last_login_ip|getAddress}</td>
+        <td></td>
+    </tr>
+    {/volist}
+</table>
+    <nav aria-label="Page navigation">
+        {$UserLoginInfo->render()}
+    </nav>
+</div>
+    {include file="public/copy" /}
+</body>
+</html>
